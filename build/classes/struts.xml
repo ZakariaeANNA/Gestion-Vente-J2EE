@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">  
+<struts>  
+<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+	<constant name="struts.devMode" value="false"/>
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources"/>
+	<constant name="struts.xwork.chaining.copyErrors" value="true"/>
+	<constant name="struts.xwork.chaining.copyFieldErrors" value="true"/>
+	<constant name="struts.xwork.chaining.copyMessages" value="true"/>
+	
+	<package name="default" extends="struts-default" namespace="/">
+		<interceptors>
+         	<interceptor name="userinterceptor" class="util.UserInterceptor" />
+     	</interceptors>  
+
+		<action name="login" >
+			<result>login.jsp</result> 
+		</action>
+		
+		<action name="signup" >
+			<result>signup.jsp</result> 
+		</action>
+		
+		<action name="index" class="action.articleAction" method="execute">
+			<interceptor-ref name="userinterceptor" />
+			<result name="success">index.jsp</result> 
+			<result name="failure" type="redirect">/</result>
+		</action>
+		<action name="commandes" class="action.addCommande" method="getcommande" >
+			<interceptor-ref name="userinterceptor" />
+			<interceptor-ref name="chain" />
+			<result name="success">commandes.jsp</result> 
+			<result name="failure" type="redirect">/</result>
+		</action>
+		<action name="facturecommande" class="action.addCommande" method="telecharger">
+		    <result name="success" type="stream">
+            	<param name="contentType">application/pdf</param>
+            	<param name="inputName">inputStream</param>
+            	<param name="contentDisposition">attachment;filename="${fileName}"</param>
+            	<param name="bufferSize">1024</param>
+    		</result>
+		</action>
+		<action name="ajoutercommande" class="action.addCommande" method="execute">
+		    <result name="success" type = "chain">
+            	commandes
+        	</result> 
+		    <result name="error" type = "chain">
+            	commandes
+        	</result>
+		</action>
+		<action name="loginApp" class="action.LoginAction" method="login">
+			<result name="success" type = "redirect">
+            	<param name = "location">index</param >
+        	</result>
+			<result name="input">login.jsp</result>
+		</action>
+		
+		<action name="signupApp" class="action.SignupAction" method="signup">
+			<result name="input">signup.jsp</result>
+			<result name="success" type = "redirect">
+            	<param name = "location">index</param >
+        	</result>
+		</action>
+		
+		<action name="logout" class="action.LoginAction" method="logout">
+			<result name="failure" type="redirect">/</result>
+		</action>
+		
+		<action name="modifier">
+			<interceptor-ref name="userinterceptor" />
+			<result name="success">modifier.jsp</result>
+			<result name="failure" type="redirect">/</result>
+		</action>
+		
+		<action name="update" class="action.UpdateAction" method="update">
+			<result name="input">modifier.jsp</result>
+			<result name="success">modifier.jsp</result>
+		</action>
+	</package>  
+</struts>

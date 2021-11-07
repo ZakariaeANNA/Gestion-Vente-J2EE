@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 28, 2021 2:23:13 AM by Hibernate Tools 5.1.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="g_vente" dynamic-insert="false" dynamic-update="false" mutable="true" name="mapping.Users" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="users">
+        <id name="codeUser" type="java.lang.Integer">
+            <column name="codeUser"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="login" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="login" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pass" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="pass" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

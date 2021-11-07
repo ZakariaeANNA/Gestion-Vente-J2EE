@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 22, 2021 12:33:09 PM by Hibernate Tools 5.1.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="g_stock" dynamic-insert="false" dynamic-update="false" mutable="true" name="mapping.ArticlesApprovisionnement" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="articles_approvisionnement">
+        <id name="codeArt" type="java.lang.Integer">
+            <column name="codeArt"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="qteCommande" optimistic-lock="true" type="int" unique="false">
+            <column name="qteCommande" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="datePrevueLivraison" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="datePrevueLivraison" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

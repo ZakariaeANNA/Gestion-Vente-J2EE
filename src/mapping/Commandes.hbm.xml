@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 28, 2021 2:23:13 AM by Hibernate Tools 5.1.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="g_vente" dynamic-insert="false" dynamic-update="false" mutable="true" name="mapping.Commandes" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="commandes">
+        <id name="codeCmd" type="java.lang.Integer">
+            <column name="codeCMD"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="client" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="client" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="codeArt" optimistic-lock="true" type="int" unique="false">
+            <column name="codeArt" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="dateCmd" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="dateCMD" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="qteCmd" optimistic-lock="true" type="int" unique="false">
+            <column name="qteCMD" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
